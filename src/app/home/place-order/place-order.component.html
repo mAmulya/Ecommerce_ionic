@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+  <ion-button (click)="goBack()" style="float:left;padding-left:5px;"  color="light"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
+  <ion-title style="padding-top:10px;">Place Order</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card *ngFor="let cart of cartItems">
+  <ion-card-header>
+    <ion-card-title>{{cart.title}}</ion-card-title>
+    <img style="height:60px;width:40px;float:right" src="http://styleworks.herokuapp.com/images/items/160/{{cart.images[cart.mainImageIndex]}}"/>
+    <h5>Quantity: {{cart.qty}}, Price: {{cart.price}}</h5>
+    <h6>Time of booking : {{jstoday}}</h6>
+    <h5>Location: </h5>{{location.flatNo}}, {{location.location}} 
+  </ion-card-header>
+
+
+</ion-card>
+  <ion-button (click)="PlaceOrder()" value="full" color="warning">Place Order</ion-button>
+</ion-content>

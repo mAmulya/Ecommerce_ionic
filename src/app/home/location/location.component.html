@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+  <ion-button (click)="goBack()" style="float:left;padding-left:5px;"  color="light"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
+  <ion-title style="padding-top:10px;">Delivery Location</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="bg-white">
+  <ion-searchbar style="right: -3px; width: 98%" [(ngModel)]="autocomplete.query"  (ionInput)="updateSearch()" (ionCancel)="goBack()" placeholder="Enter Address"></ion-searchbar>
+
+     <ion-item (click)="getCurrentLocation()" style="cursor: pointer;">
+  <ion-icon ios="ios-locate" md="md-locate"></ion-icon> Use Current Location</ion-item>
+  <ion-list>
+    <ion-item *ngFor="let item of autocompleteItems" tappable   (click)="chooseItem(item)">
+      {{ item }}
+    </ion-item>
+  </ion-list>
+</ion-content>

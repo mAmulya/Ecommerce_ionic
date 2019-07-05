@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Ecommerce
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content>
+  <div cards>
+
+    <div class="grid-full">
+      <ion-row>
+        <ion-col >
+         <a [routerLink]="['/products']" [queryParams]="{}" >  <ion-card>
+            <p class="para">All</p>
+
+          </ion-card></a>
+        </ion-col>
+        <ion-col *ngFor="let c of categories">
+          <a [routerLink]="['/products']" [queryParams]="{categoryName:c.name}" ><ion-card>
+            <p class="para">{{c.name}}</p>
+          </ion-card></a>
+        </ion-col>
+
+
+      </ion-row>
+    </div>
+
+  </div>
+</ion-content>

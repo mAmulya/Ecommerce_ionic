@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+  <ion-button (click)="goBack()" style="float:left;padding-left:5px;"  color="light"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
+  <ion-title style="padding-top:10px;">Cart</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <ion-item>        <ion-col style="padding-left:20px;" size=5><br><h5>Title and price</h5>
+  </ion-col>
+          <ion-col style="padding-left:20px;" size=3><br>
+          <h5>qty</h5>
+
+          </ion-col>
+          <ion-col size=2><br><h5>Total</h5>
+            </ion-col>
+    </ion-item>
+  <ion-grid>
+
+    <ion-row *ngFor="let c of cart">
+      <ion-col size=2>
+        <img style="height:60px;width:40px;float:left" src="http://styleworks.herokuapp.com/images/items/160/{{c.images[c.mainImageIndex]}}"/>
+      </ion-col>
+        <ion-col size=3><strong>{{c.title}}</strong><br>${{c.price}}
+</ion-col>
+        <ion-col size=3><br><button (click)="incQty(c)"><ion-icon name="add"></ion-icon></button>
+          {{c.qty}}
+          <button (click)="decQty(c)"><ion-icon name="remove"></ion-icon></button>
+        </ion-col>
+        <ion-col size=2><br>${{c.qty*c.price}}
+          </ion-col>
+          <ion-col size=1><ion-button (click)="Ondelete(c)" class="round" color="danger"><ion-icon name="trash"></ion-icon></ion-button>
+
+</ion-col>
+
+    </ion-row>
+  </ion-grid>
+  <ion-item style="padding-left:50px;">
+      <h5>total Items: {{count}}&nbsp;total: {{total}}</h5>
+
+
+</ion-item>
+
+<!-- <div>
+<br>
+    <ion-item >
+      <ion-label >FaltNo:</ion-label>
+      <ion-input  [(ngModel)]="faltNo" type="text" value="{{flatNo}}"></ion-input>
+    </ion-item>
+
+    <ion-item >
+      <ion-label >Address</ion-label>
+      <ion-input [(ngModel)]="addrs" type="text" value="{{addrs}}"></ion-input>
+    </ion-item>
+    <ion-chip>
+      <ion-label   (click)="navToLoc()"><ion-icon ios="ios-locate" md="md-locate"></ion-icon>Get Location</ion-label>
+    </ion-chip>
+
+</div> -->
+<form (ngSubmit)="navToPlaceOrder()">
+  <ion-item>
+    <ion-label>door No</ion-label>
+    <ion-input type="text" [(ngModel)]="address.flatNo" name="flatNo"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>Address</ion-label>
+    <ion-textarea [(ngModel)]="address.location" name="location"></ion-textarea>
+  </ion-item>
+  <ion-chip>
+    <ion-label   (click)="navToLoc()"><ion-icon ios="ios-locate" md="md-locate"></ion-icon>Get Location</ion-label>
+  </ion-chip>
+  <ion-button type="submit" value="full" color="warning">checkout</ion-button>
+
+</form>
+<!-- <a [routerLink]="['/home']">adf</a> -->
+</ion-content>

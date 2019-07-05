@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+  <ion-button (click)="goBack()" style="float:left;padding-left:5px;"  color="light"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
+  <ion-title style="padding-top:10px;">Products</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+  <div *ngIf="items==false">
+    <h6>no items match</h6>
+  </div>
+  <ion-card *ngFor="let item of items" >
+    <ion-card-header *ngIf="item.price!=0">
+      <div style="padding-left:4px;float:left;padding-bottom:14px;" >
+        <img class="card-img-top" style="width:90px;height:150px;" src="http://styleworks.herokuapp.com/images/items/160/{{item.images[item.mainImageIndex]}}" alt="Card image cap">
+      </div>
+        <div>
+        <ion-card-subtitle><h3>{{item.title}}</h3></ion-card-subtitle>
+        <ion-card-title><h4>Price : {{item.price}}</h4></ion-card-title>
+        <ion-button (click)="addToCart(item)" style="padding-left:50px;" color="primary"><ion-icon name="md-cart"></ion-icon></ion-button>
+        <ion-button color="primary">buyNow</ion-button>
+      </div>
+
+    </ion-card-header>
+  </ion-card>
+
+</ion-content>

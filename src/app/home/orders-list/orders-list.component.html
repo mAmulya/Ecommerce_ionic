@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar  color="primary">
+  <ion-button (click)="goBack()" style="float:left;padding-left:5px;"  color="light"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
+  <ion-title style="padding-top:10px;">Your Orders</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor="let order of orders">
+    <ion-card *ngFor="let cart of order.cartItems">
+    <ion-card-header>
+      <ion-card-title>{{cart.title}}</ion-card-title>
+      <img style="height:60px;width:40px;float:right" src="http://styleworks.herokuapp.com/images/items/160/{{cart.images[cart.mainImageIndex]}}"/>
+      <h5>Quantity: {{cart.qty}}, Price: {{cart.price}}</h5>
+      <h6>Time of booking : {{order.date}}</h6>
+      <h5>Location: </h5>{{order.addrs.flatNo}}, {{order.addrs.location}}
+    </ion-card-header>
+
+
+  </ion-card>
+  </div>
+
+
+
+</ion-content>
